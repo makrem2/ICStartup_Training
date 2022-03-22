@@ -1,0 +1,78 @@
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2 style="color: #000;">NOS FORMATIONS</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <section>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h5 class="text-primary h6"></h5>
+                <h2 class="display-20 display-md-18 display-lg-16">Nos Formations</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-2-6"
+                 *ngFor="let item of datacourse">
+                    <article class="card card-style2">
+                        <div class="card-img">
+                            <img height="300px" width="350px" src="{{imagepath}}{{item.photo}}"
+                            alt="{{item.title}}">
+                            <div class="date"><span>{{item.createdAt|date:'MM'}}</span>{{item.createdAt|date:'dd'}}</div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5"><a href="#!">{{item.title}}</a></h3>
+                            <p class="display-30">{{item.desc}}</p>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                              
+                                  <div class="col-md-6">
+                                    <img class="rounded" height="50px" width="50px"
+                                    src="{{imagepath}}{{item.Formateur.photo}}" >
+                                  </div>
+                              
+                                  <div class="col-md-6">
+                                    <h6  style="margin-top: 16px;
+                                    font-size: 1rem;margin-left: -77px;"
+                                    >Avec {{item.Formateur.name}}{{item.Formateur.prenom}}</h6>
+                                  </div>
+                              
+                                </div>
+                              </div>
+                        </div>
+                        <div class="card-footer">
+                            <ul>
+                                <li><a><i class="fas fa-user"></i>{{item.Category.name}}</a></li>
+                                <li><a><i class="fa fa-money"></i><span>{{item.prix}}  DT</span></a></li>                               
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <ul>
+                                <li style="margin: auto;"><a><i class="far fa-calendar-check"></i>{{item.duree}}</a></li>                                
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <ul>
+                                <button style="margin: auto;" routerLink="/inscription"
+                                class="btn btn-info">Inscription</button>
+                                
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        </section>
+        <br>
+        <br>
+    <!-- all-course End -->
+</main>

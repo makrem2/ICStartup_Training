@@ -1,0 +1,115 @@
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2 style="color: #000;">Contactez-Nous</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- ================ contact section start ================= -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Contactez-nous</h2>
+                </div>
+                <div class="col-lg-8">
+                    <form class="form-contact contact_form" id="contactForm"
+                    #f="ngForm" (ngSubmit)="contact(f)">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <textarea cols="30" rows="9" class="form-control w-100"
+                                         name="yourmessage" id="yourmessage" placeholder=" Enter Message"
+                                         #yourmessage="ngModel" ngModel
+                                         ></textarea>
+                                         <div class="alert alert-danger" *ngIf="yourmessage.errors?.required && yourmessage.touched">
+                                            Message is required
+                                            </div>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="yourname"
+                                     id="yourname" type="text"
+                                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name"
+                                      #yourname="ngModel"ngModel
+                                      >
+                                      <div class="alert alert-danger" *ngIf="yourname.errors?.required && yourname.touched">
+                                        name is required
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="youremail" id="youremail"
+                                     type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email"
+                                     #youremail="ngModel"ngModel
+                                     >
+                                     <div class="alert alert-danger" *ngIf="youremail.errors?.required && youremail.touched">
+                                        email is required
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="yoursubject" id="yoursubject"
+                                     type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject"
+                                     #yoursubject="ngModel"ngModel
+                                     >
+                                     <div class="alert alert-danger" *ngIf="yoursubject.errors?.required && yoursubject.touched">
+                                        Subject is required
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success" *ngIf="messageErr" >
+                            {{messageErr}}
+                          </div>
+                          <div class="alert alert-success" *ngIf="messagesucces" >
+                              {{messagesucces}}
+                            </div>
+                        <div class="form-group mt-3">
+                            <button [disabled]="f.invalid" class="button button-contactForm boxed-btn">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Rue 18 Janvier</h3>
+                            <p>, Béja 9000</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>+216 97 732 156</h3>
+                            <p>Mon to Fri 8am to 5pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3> info@icstartup.training</h3>
+                            <p>Envoyez-nous votre demande à tout moment!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ contact section end ================= -->
+</main>

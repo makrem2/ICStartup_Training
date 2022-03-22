@@ -1,0 +1,131 @@
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Gestion Formateurs</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">All Formateurs</h6>
+        </div>
+        <div class="card-body">
+            <button type="button" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#addmodal">
+                Add Formateur
+              </button>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            
+                            <th>name</th>
+                            <th>prenom</th>
+                            <th>photo</th>
+                            <th>post</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataformateur ;index as i">
+                            <td>{{item.name}}</td>
+                            <td>{{item.prenom}}</td>
+                            <td><img src="{{imagepath}}{{item.photo}}"
+                                height="100px" alt="{{item.title}}"></td>
+                            <td>{{item.post}}</td>
+                            <td>
+                                <button class="btn btn-info">Détails</button>
+                                <button class="btn btn-danger"
+                                (click)="deleteformateur(item.id,i)">Delete</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+<!-- ADdModal -->
+<div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Formateur</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="addformateur(f)">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Name</label>
+              <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              name="name"
+              #name="ngModel"ngModel
+              />
+              <div class="alert alert-danger" *ngIf="name.errors?.required && name.touched">
+                Name is required
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Prenom</label>
+                <input
+                type="text"
+                class="form-control"
+                id="prenom"
+                required
+                name="prenom"
+                #prenom="ngModel"ngModel
+                />
+              <div class="alert alert-danger" *ngIf="prenom.errors?.required && prenom.touched">
+                Prenom is required
+              </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Photo</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                required
+                name="path"
+                #path="ngModel" ngModel
+                 (change)="selectImage($event)" />
+                 <div class="alert alert-danger" *ngIf="path.errors?.required && path.touched">
+                  Photo is required
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Post</label>
+                <input
+                type="text"
+                class="form-control"
+                id="post"
+                required
+                name="post"
+                #post="ngModel" ngModel
+              />
+              <div class="alert alert-danger" *ngIf="post.errors?.required && post.touched" >
+                post is required
+              </div>
+            </div>
+            <div class="alert alert-success" *ngIf="messagesucces" >
+              {{messagesucces}}
+            </div>
+            <div class="alert alert-danger" *ngIf="messageErr" >
+              {{messageErr}}
+            </div>
+            <button class="btn btn-success" [disabled]="f.invalid">Add Formateur</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

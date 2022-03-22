@@ -1,0 +1,138 @@
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2 style="color: #000;">Inscrivez-Vous</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <!-- ================ contact section start ================= -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Inscrivez-Vous</h2>
+                </div>
+                <div class="col-lg-8">
+                    <form #f="ngForm" (ngSubmit)="inscription(f)" 
+                    class="form-contact contact_form" method="post" id="contactForm"
+                     novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control w-100"
+                                    id="prenom"
+                                    required
+                                    name="prenom"
+                                    #prenom="ngModel" ngModel
+                                    cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter votre prenon'" placeholder=" prenon">
+                                    <div class="alert alert-danger" *ngIf="prenom.errors?.required && prenom.touched">
+                                        prenom is required
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid"
+                                    id="name"
+                                    required
+                                    name="name"
+                                    #name="ngModel" ngModel
+                                     type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'name'" placeholder="Enter votre name">
+                                     <div class="alert alert-danger" *ngIf="name.errors?.required && name.touched">
+                                        name is required
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input [(ngModel)]="emaill"
+                                   class="form-control valid"
+                                   id="email"
+                                   required
+                                   name="email"
+                                   #email="ngModel" ngModel type="email" 
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                    <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched">
+                                        email is required
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control"
+                                    id="phone"
+                                    required
+                                    name="phone"
+                                    #phone="ngModel" ngModel
+                                    type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter votre telephone'" placeholder="Enter votre telephone">
+                                    <div class="alert alert-danger" *ngIf="phone.errors?.required && phone.touched">
+                                        phone is required
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <select class="form-control"
+                                    id="CategoryId"
+                                    required
+                                    name="CategoryId"
+                                    #CategoryId ="ngModel"ngModel>
+                                        <!-- <option [ngValue]="null" disabled selected>---Select---</option> -->
+                                        <option *ngFor="let item of datacategorie" value="{{item.id}}">{{item.name}}</option>
+                                        <option value="" disabled>--Select Categorie--</option>  
+                                    </select>
+
+                                      <div class="alert alert-danger" *ngIf="CategoryId.errors?.required && CategoryId.touched">
+                                        Categorie is required
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="messageErr" >
+                            {{messageErr}}
+                          </div>
+                          <div class="alert alert-success" *ngIf="messagesucces" >
+                              {{messagesucces}}
+                            </div>
+                        <div class="form-group mt-3">
+                            <button [disabled]="f.invalid" class="button button-contactForm boxed-btn">envoyer</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Rue 18 Janvier</h3>
+                            <p>, Béja 9000</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>+216 97 732 156</h3>
+                            <p>Mon to Fri 8am to 5pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3> info@icstartup.training</h3>
+                            <p>Envoyez-nous votre demande à tout moment!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ contact section end ================= -->
+</main>

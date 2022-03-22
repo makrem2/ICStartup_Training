@@ -1,0 +1,49 @@
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2 style="color: #000;">Evenement</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+    <div class="container">
+        <div class="text-center mb-5">
+            <h5 class="text-primary h6"></h5>
+            <h2 class="display-20 display-md-18 display-lg-16">Evenement</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6" *ngFor="let item of dataevent">
+              <!-- START widget-->
+              <div class="panel widget">
+                 <div class="row row-table row-flush">
+                    <div class="col-xs-5">
+                       <picture class="lateral-picture">
+                        <img src="{{imagepath}}{{item.photo}}"
+                        alt="{{item.title}}">
+                       </picture>
+                    </div>
+                    <div class="col-xs-7 align-middle p-lg">
+                       <div class="pull-right"><a routerLink="/inscription" class="btn btn-primary btn-sm">Inscription</a>
+                       </div>
+                       <p>
+                          <span class="text-lg"></span>{{item.createdAt|date:'yyyy-MM-dd'}}</p>
+                       <p>
+                          <strong>{{item.title}}</strong>
+                       </p>
+                       <p>{{item.description}}</p>
+                    </div>
+                 </div>
+              </div>
+              <!-- END widget-->
+            </div>
+        </div>
+        </div>
+</main>

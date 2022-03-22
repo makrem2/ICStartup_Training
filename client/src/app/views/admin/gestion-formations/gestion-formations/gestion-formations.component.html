@@ -1,0 +1,344 @@
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Gestion Formations</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">All Formations</h6>
+        </div>
+        <div class="card-body">
+            <button type="button" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#addmodal">
+                Add Formations
+              </button>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                           
+                            <th>title</th>
+                            <th>desc</th>
+                            <th>photo</th>
+                            <th>username</th>
+                            <th>prix</th>
+                            <th>duree</th>
+                            <th>CategoryId</th>
+                            <th>FormateurId</th>
+                            <th>UserId</th>
+                            <th>Action</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataArray ;index as i">
+                            
+                            <td>{{item.title}}</td>
+                            <td>{{item.desc}}</td>
+                            <td><img src="{{imagepath}}{{item.photo}}"
+                                height="100px" alt="{{item.title}}"></td>
+                            <td>{{item.username}}</td>
+                            <td>{{item.prix}}</td>
+                            <td>{{item.duree}}</td>
+                            <td>{{item.Category.name}}</td>
+                            <td>{{item.Formateur.name}}</td>
+                            <td>{{item.User.username}}</td>
+                            <td>
+                                <button class="btn btn-info" (click)="getdata(item.title,item.desc
+                                ,item.id,item.username,item.prix,item.duree,item.CategoryId,item.FormateurId,item.UserId,
+                                item.photo )"
+                                 data-toggle="modal" data-target="#Modifiermodal">Modifier</button>
+                                <button class="btn btn-danger" (click)="deleteformation(item.id,i)">Delete</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+  
+<!-- ADdModal -->
+<div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Formations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="addformation(f)">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label>
+            <input
+            type="text"
+            class="form-control"
+            id="title"
+            required
+            name="title"
+            #title="ngModel"ngModel
+            />
+            <div class="alert alert-danger" *ngIf="title.errors?.required && title.touched">
+              Title is required
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Description</label>
+              <textarea
+              type="text"
+              class="form-control"
+              id="desc"
+              required
+              name="desc"
+              #desc="ngModel" ngModel
+            ></textarea>
+            <div class="alert alert-danger" *ngIf="desc.errors?.required && desc.touched">
+              Description is required
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Photo</label>
+              <input type="file" class="form-control-file" id="exampleFormControlFile1"
+              required
+              name="path"
+              #path="ngModel" ngModel
+               (change)="selectImage($event)" />
+               <div class="alert alert-danger" *ngIf="path.errors?.required && path.touched">
+                Photo is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Username</label>
+              <input
+              type="text"
+              class="form-control"
+              id="username"
+              required
+              name="username"
+              #username="ngModel" ngModel
+            />
+            <div class="alert alert-danger" *ngIf="username.errors?.required && username.touched" >
+              Username is required
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Prix</label>
+              <input
+              type="number"
+              class="form-control"
+              id="prix"
+              required
+              name="prix"
+              #prix="ngModel" ngModel
+            />
+            <div class="alert alert-danger" *ngIf="prix.errors?.required && prix.touched"  >
+              Prix is required
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Duree</label>
+              <input
+              type="text"
+              class="form-control"
+              id="duree"
+              required
+              name="duree"
+              #duree="ngModel" ngModel
+            />
+            <div class="alert alert-danger" *ngIf="duree.errors?.required && duree.touched"  >
+              Duree is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Categorie</label>
+              <select class="browser-default custom-select"
+              id="categorie"
+              required
+              name="categorie"
+              #categorie="ngModel"ngModel>
+                  <option [ngValue]="null" disabled>---Select---</option>
+                  <option *ngFor="let item of dataArraycategorie" value="{{item.id}}">{{item.name}}</option>
+                </select>
+          </div>
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Formateur</label>
+              <select class="browser-default custom-select"
+              id="forma"
+              required
+              name="forma"
+              #forma="ngModel"ngModel
+              >
+              <option [ngValue]="null" disabled>---Select---</option>
+              <option *ngFor="let item of dataformateur" value="{{item.id}}">{{item.name}}</option>
+              </select>
+
+          </div>
+          <div class="alert alert-success" *ngIf="messageSuccess" >
+            {{messageSuccess}}
+          </div>
+          <div class="alert alert-danger" *ngIf="messageErr" >
+            {{messageErr}}
+          </div>
+          <button class="btn btn-success" [disabled]="f.invalid">Add Formation</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+<!-- Modifier Modal -->
+<div class="modal fade" id="Modifiermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier Formation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> 
+      </div>
+      <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Photo</label>
+              <div class="input-group mb-3">
+                      <img src="{{imagepath}}{{data.photo}}" 
+                      height="200px" width="100%"
+                      alt="">
+                </div>
+            </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input
+                type="text"
+                class="form-control"
+                id="titlee"
+                [(ngModel)]="data.title"
+                required
+                name="titlee"
+                #titlee="ngModel"ngModel
+                />
+                <div class="alert alert-danger" *ngIf="titlee.errors?.required && titlee.touched">
+                  Title is required
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlInput1">Description</label>
+                  <textarea
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="data.desc"
+                  id="desc"
+                  required
+                  name="desc"
+                  #descc="ngModel" ngModel
+                ></textarea>
+                <div class="alert alert-danger" *ngIf="descc.errors?.required && descc.touched">
+                  Description is required
+                </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Username</label>
+                  <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="data.username"
+                  id="username"
+                  required
+                  name="username"
+                  #usernamee="ngModel" ngModel
+                />
+                <div class="alert alert-danger" *ngIf="usernamee.errors?.required && usernamee.touched">
+                  Username is required
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlInput1">Prix</label>
+                  <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="data.prix"
+                  id="prix"
+                  required
+                  name="prix"
+                  #prixx="ngModel" ngModel
+                />
+                <div class="alert alert-danger" *ngIf="prixx.errors?.required && prixx.touched" >
+                  Prix is required
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlInput1">Duree</label>
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="duree"
+                  [(ngModel)]="data.duree"
+                  required
+                  name="duree"
+                  #dureee="ngModel" ngModel
+                />
+                <div class="alert alert-danger" *ngIf="dureee.errors?.required && dureee.touched">
+                  Duree is required
+                </div>
+              </div>
+              <div class="form-group">
+                    <select
+                    class="browser-default custom-select"
+                    id="pCategory"
+                    name="pCategory"
+                    #categoriee="ngModel"ngModel
+                  >
+                    <option  [ngValue]="null" disabled>Choose a Category</option>
+                    <option *ngFor="let item of dataArraycategorie" value="{{item.id}}"
+                    [selected]="data.CategoryId"
+                    >{{item.name}}</option>
+                  </select>
+                  <div class="alert alert-danger" *ngIf="categoriee.errors?.required && categoriee.touched">
+                    Category is required
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlInput1">Formateur</label>
+                  <select class="browser-default custom-select"
+                  id="pformateur"
+                  name="pformateur"
+                  #formateurr="ngModel"ngModel
+                  >
+                  <option  [ngValue]="null" disabled>Choose a Formateur</option>
+                  <option *ngFor="let item of dataformateur" value="{{item.id}}"
+                  [selected]="data.FormateurId"
+                  >{{item.name}}</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="formateurr.errors?.required && formateurr.touched">
+                  Formateur is required
+                </div>
+              </div>
+              <div class="alert alert-success" *ngIf="messageSuccess" >
+                {{messageSuccess}}
+              </div>
+              <div class="alert alert-danger" *ngIf="messageErr" >
+                {{messageErr}}
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Modifier Formation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

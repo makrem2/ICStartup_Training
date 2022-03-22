@@ -1,0 +1,126 @@
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area ">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2 style="color: #000;">Blog</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+    <section class="home-blog bg-sand">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h5 class="text-primary h6"></h5>
+                <h2 class="display-20 display-md-18 display-lg-16">Blog</h2>
+            </div>
+            <!-- section title ends -->
+            <div class="row ">
+                <div class="col-md-6" *ngFor="let item of datablog">
+                    <div class="media blog-media">
+                      <a (click)="SendIdBlog(item.id)"><img class="d-flex" height="350px"
+                        width="380px"
+                        src="{{imagepath}}{{item.photo}}"
+                        alt="{{item.title}}" ></a>
+                      <div class="circle">
+                          <h5 class="day">{{item.createdAt|date:'dd'}}</h5>
+                          <span class="month">{{item.createdAt|date:'MM'}}</span>
+                      </div>
+                      <div class="media-body">
+                        <a (click)="SendIdBlog(item.id)"><h5 class="mt-0">{{item.title}}</h5></a>
+                        <p > {{ (item.desc.length>100)? (item.desc | slice:0:90)+'..':(item.desc) }}</p>
+                        <a class="post-link"
+                        (click)="SendIdBlog(item.id)"
+                        >Read More</a>
+                        <ul>
+                            <li>by: {{item.User.username}}</li>
+                            <li class="text-right"><a href="#">{{item.Category.name}}</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+    <!-- <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item" *ngFor="let item of datablog">
+                            <div class="blog_item_img">
+                                <img src="{{imagepath}}{{item.photo}}"
+                                alt="{{item.title}}">
+                                <a href="#" class="blog_item_date">
+                                    <h3>{{item.createdAt|date:'yyyy-MM-dd'}}</h3>
+                                </a>
+                            </div>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="blog_details.html">
+                                    <h2 class="blog-head" style="color: #2d2d2d;">{{item.title}}</h2>
+                                </a>
+                                <p>{{item.desc}}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-list"></i>{{item.Category.name}}</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> {{item.username}}</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Search Keyword'
+                                            onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btns" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Search</button>
+                            </form>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title" style="color: #2d2d2d;">Category</h4>
+                            <ul class="list cat-list">
+                                <li *ngFor="let item of datacategorie">
+                                    <a href="#" class="d-flex">
+                                        <p>{{item.name}}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title" style="color: #2d2d2d;">Recent Post</h3>
+                            <div class="media post_item" *ngFor="let item of datablog">
+                                <img height="50px" src="{{imagepath}}{{item.photo}}"
+                                alt="{{item.title}}">
+                                <div class="media-body">
+                                    <a href="blog_details.html">
+                                        <h3 style="color: #2d2d2d;">{{item.title}}</h3>
+                                    </a>
+                                    <p>{{item.createdAt}}</p>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <!--================Blog Area =================-->
+</main>
