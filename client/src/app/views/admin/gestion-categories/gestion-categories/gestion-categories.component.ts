@@ -36,7 +36,7 @@ export class GestionCategoriesComponent implements OnInit {
     this.data.id=id
     this.data.name=name
     this.messageSuccess=''
-    console.log(this.data)
+    //console.log(this.data)
 
   }
 
@@ -46,10 +46,7 @@ export class GestionCategoriesComponent implements OnInit {
       console.log(response)
       let indexId=this.dataArray.findIndex((obj:any)=>obj.id==this.data.id)
       this.dataArray[indexId].name=data.name
-
       this.messageSuccess="categorie updated sucsucfuly"
-
-      
     },
       (err:HttpErrorResponse)=>
       {

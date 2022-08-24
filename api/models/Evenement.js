@@ -1,11 +1,11 @@
 module.exports=(sequelize,DataType)=>{
     const Evenement=sequelize.define("Evenement",{
         title: {
-            type:DataType.STRING,
+          type:DataType.STRING(15000),
             allowNull:false
           },
           description:{
-            type:DataType.STRING,
+            type:DataType.STRING(15000),
             allowNull:false
         },
           photo: {

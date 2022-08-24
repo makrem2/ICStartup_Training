@@ -25,10 +25,16 @@ export class GestionFormateursComponent implements OnInit {
 
 
   constructor(private ds:DataService,private router:Router ,private auth:AuthadminService) {
-    this.ds.getallformateur().subscribe(data=>this.dataformateur=data)
+    
+   }
+
+   ResetMessage(){
+    this.messagesucces=""
+    this.messageErr=""
    }
 
   ngOnInit(): void {
+    this.ds.getallformateur().subscribe(data=>this.dataformateur=data)
   }
 
   deleteformateur(id:any,i:number){
@@ -66,11 +72,13 @@ export class GestionFormateursComponent implements OnInit {
     
    
     this.ds.addformateur(formData).subscribe(data=>{
+      this.ngOnInit();
+      f.resetForm();
      //this.router.navigate(['/admin/gestionformateurs'])
      this.messagesucces="Formateur ajouter avec success"
     },(err:HttpErrorResponse)=>{
      this.messageErr=err.error
-      console.log(err.error)
+      // console.log(err.error)
     })
   }
 

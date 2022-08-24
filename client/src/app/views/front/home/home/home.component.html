@@ -1,570 +1,857 @@
 <main>
-    <!-- <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"
-    style="margin-bottom: -120px;margin-top: -100px;">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../../../../../assets/front/img/bg1.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block"style="margin-top: 500px;">
-              <h5 style="font-size: 7.25rem;color: aliceblue;">ÉDUCATION</h5>
-              <p style="font-size: 2.25rem;color: aliceblue;">L'éducation pour tous.</p>
-              <p style="color: aliceblue;">Nous fournissons toujours nos meilleurs services à nos clients et nous essayons toujours<br> d'obtenir la confiance et la satisfaction de nos clients.</p>
-                <button class="btn btn-primary">Voir les détails</button>
+  <!--? slider Area Start-->
+  <div class="slider-area">
+    <div class="slider-active">
+      <div
+        class="single-slider slider-height d-flex align-items-center"
+        style="min-height: 580px"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="hero__caption">
+                <h1 class="anim">Apprenez le développement web</h1>
+                <br />
+                <h6>
+                  La liberté de se former en dehors de sa vie professionnelle ou
+                  de ses études.
+                </h6>
+                <br />
+                <br />
+                <div class="hero__btn">
+                  <button class="Commencez" routerLink="/nosformations">
+                    Commencez
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="hero-man d-none d-lg-block f-right"
+                data-animation="jello"
+                data-delay=".4s"
+                style="
+                  position: relative;
+                  right: -200px;
+                  bottom: -23px;
+                  margin-top: -30px;
+                "
+              >
+                <img
+                  src="../../../../../assets/front/img/hero/hero-img.png"
+                  loading="lazy"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
-           <div class="carousel-item">
-            <img src="../../../../../assets/front/img/bg2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <section>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fa fa-stack-overflow"></i>
+          </div>
+          <h3>Full Stack Web</h3>
+          <p>
+            Changez de vie en 6 mois ! quelque soit votre diplôme ou niveau
+            d'étude, devenez développeur web.
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fa fa-free-code-camp"></i>
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>Commencez votre première expérience dans le marketing digital.</p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-wrench"></i>
+          </div>
+          <h3>Data Science</h3>
+          <p>
+            Exploiter la puissance de Colab, Python et du Deep Learning pour
+            résoudre n’importe quel problème de classification d’images.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--? Popular Course Start -->
+  <div class="popular-course section-padding30">
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="cl-xl-7 col-lg-8 col-md-10">
+          <!-- Section Tittle -->
+          <div class="section-tittle text-center mb-70">
+            <span>Découvrez nos cours les plus populaires de la semaine</span>
+            <h2>Nos cours populaires</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-xl-4 col-lg-4 col-md-6"
+          *ngFor="
+            let item of datacourse
+              | paginate: { itemsPerPage: 3, currentPage: p, id: 'cours' }
+          "
+        >
+          <!-- Single course -->
+          <div class="single-course mb-40">
+            <div class="course-img">
+              <img
+                height="200px"
+                width="100px"
+                src="{{ imagepath }}{{ item.photo }}"
+              />
+            </div>
+            <div class="course-caption">
+              <div class="course-cap-top">
+                <h4>
+                  <a href="#">{{ item.title }}</a>
+                </h4>
+              </div>
+              <div class="course-cap-mid d-flex justify-content-between">
+                <ul>
+                  <li>
+                    <i class="ti-user"></i> Avec {{ item.Formateur.name
+                    }}     {{ item.Formateur.prenom }}
+                  </li>
+                </ul>
+                <i class="ti-money"> {{ item.prix }} DT</i>
+              </div>
+              <div class="course-cap-bottom d-flex justify-content-between">
+                <ul>
+                  <li><i class="ti-time"></i>{{ item.duree }}</li>
+                </ul>
+                <!-- <span>Free</span> -->
+              </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <img src="../../../../../assets/front/img/bg3.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
-          </div> 
         </div>
-         <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </button>
-      </div> -->
-        <!--? slider Area Start-->
-        <div class="slider-area ">
-            <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center" style="min-height: 580px;">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-xl-6 col-lg-7 col-md-8">
-                                <div class="hero__caption" style="right: -200px;">
-                                    <span data-animation="fadeInLeft" data-delay=".2s">Cours en ligne populaires</span>
-                                    <h1 data-animation="fadeInLeft" data-delay=".4s" style="font-size: 44px;">La nouvelle façon d'apprendre correctement avec nous !</h1>
-                                   
-                                    <div class="hero__btn">
-                                        <a routerLink="/nosformations" class="btn btn-info"  data-animation="fadeInLeft" data-delay=".8s">Commencez</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-5">
-                                <div class="hero-man d-none d-lg-block f-right" data-animation="jello" data-delay=".4s"
-                                style="position: relative;
-                                right: -200px;
-                                bottom: -23px;
-                                margin-top: -30px;">
-                                    <img src="../../../../../assets/front/img/hero/hero-img.png" 
-                                    loading="lazy" alt="">
-                                    <!-- <iframe src="https://giphy.com/embed/qMGOIRnDWIUUM4htkD" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/solturo-tech-technology-solturocom-qMGOIRnDWIUUM4htkD">via GIPHY</a></p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      </div>
+      <br />
+      <br />
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <pagination-controls
+              id="cours"
+              class="my-pagination"
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+      <!-- Section Button -->
+      <br />
+      <br />
+    </div>
+  </div>
+  <!-- Popular Course End -->
+
+  <!--? Team Ara Start -->
+  <div
+    class="team-area pt-160 pb-160 section-bg"
+    [ngStyle]="{
+      backgroundImage: 'url(../../../assets/front/img/gallery/section_bg02.png)'
+    }"
+  >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="cl-xl-7 col-lg-8 col-md-10">
+          <!-- Section Tittle -->
+          <div class="section-tittle section-tittle2 text-center mb-70">
+            <span>En savoir plus sur notre Plateforme</span>
+            <h2>Nos meilleurs Formateurs</h2>
+          </div>
+        </div>
+      </div>
+      <p-carousel
+        [value]="dataformateur"
+        [numVisible]="3"
+        [numScroll]="3"
+        [circular]="false"
+        [autoplayInterval]="3000"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template pTemplate="header"> </ng-template>
+        <ng-template let-product pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="single-team mb-30">
+                <div class="team-img">
+                  <img
+                    height="350px"
+                    src="{{ imagepath }}{{ product.photo }}"
+                    alt="{{ product.title }}"
+                  />
+                  <!-- Blog Social -->
+                  <ul class="team-social">
+                    <li>
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fas fa-globe"></i></a>
+                    </li>
+                  </ul>
                 </div>
+                <div class="team-caption">
+                  <h3>
+                    <a routerLink="/formateurs"
+                      >{{ product.name }} {{ product.prenom }}</a
+                    >
+                  </h3>
+                  <p>{{ product.post }}</p>
+                </div>
+              </div>
             </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+      <!-- Section Button -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="browse-btn2 text-center mt-70">
+            <button routerLink="/formateurs" class="homebtn"
+              >Voir tous les Formateurs</button>
+            
+          </div>
         </div>
-        <!-- slider Area End-->
-                <!--? Categories Area Start -->
-                <div class="categories-area section-padding30">
-                    <div class="container">
-                        <div class="row no-gutters">
-                      
-                          <div class="col-lg-3 col-md-6">
-                            <div class="single-cat mb-50">
-                                <div class="cat-icon">
-                                    <span class="flaticon-web-design"></span>
-                                </div>
-                                <div class="cat-cap">
-                                    <h4>Méthodologie</h4>
-                                    <p>Apprendre en faisant, apprendre à apprendre est le maître mot de notre démarche pratiquée à 90% .</p>
-                                </div>
-                            </div>
-                          </div>
-                      
-                          <div class="col-lg-3 col-md-6">
-                            <div class="single-cat mb-50">
-                                <div class="cat-icon">
-                                    <span class="flaticon-education"></span>
-                                </div>
-                                <div class="cat-cap">
-                                    <h4>Bootcamp</h4>
-                                    <p>Des bootcamps mis en place en partenariat avec les recruteurs et accessibles à tout le monde.</p>
-                                </div>
-                            </div>
-                          </div>
-                      
-                          <div class="col-lg-3 col-md-6">
-                            <div class="single-cat mb-50">
-                                <div class="cat-icon">
-                                    <span class="flaticon-computing"></span>
-                                </div>
-                                <div class="cat-cap">
-                                    <h4>Mode d'accès</h4>
-                                    <p>En ligne ou en présentiel nos coachs et experts vous apprendront à devenir un vrai codeur.</p>
-                                </div>
-                            </div>
-                          </div>
-                      
-                          <div class="col-lg-3 col-md-6">
-                            <div class="single-cat mb-50">
-                                <div class="cat-icon">
-                                    <span class="flaticon-communications"></span>
-                                </div>
-                                <div class="cat-cap">
-                                    <h4>Recrutement</h4>
-                                    <p>Préparation de CV, préparation d'entretiens et accès à notre réseau de recruteurs.         </p>
-                                <br>
-                                </div>
-                            </div>
-                          </div>
-                      
-                        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <section>
+    <div class="row">
+      <h2 class="section-heading">
+        Un accompagnement complet jusqu'au recrutement
+      </h2>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-truck-pickup"></i>
+          </div>
+          <h3>Service Heading</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+            consequatur necessitatibus eaque.
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-broom"></i>
+          </div>
+          <h3>Service Heading</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+            consequatur necessitatibus eaque.
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-plug"></i>
+          </div>
+          <h3>Service Heading</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
+            consequatur necessitatibus eaque.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!-- Team Ara End -->
+  <!--? About Law Start-->
+  <div class="about-area section-padding2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="about-caption mb-50">
+            <!-- Section Tittle -->
+            <div class="section-tittle mb-35">
+              <span>En savoir plus sur notre plateforme</span>
+              <h2>Pour en savoir plus</h2>
+            </div>
+            <p>
+              On vous garantie une formation éfficace et un certificat homologué
+              dans plusieurs domaines technologiques et Soft Skills qui vous
+              facilitent l'intégration au marché d'emploi.
+            </p>
+            <ul>
+              <li>
+                <span class="flaticon-business"></span>Design moderne & réactif
+              </li>
+              <li>
+                <span class="flaticon-communications-1"></span>Créez votre site
+                Web de manière professionnelle
+              </li>
+              <li>
+                <span class="flaticon-graduated"></span>Certificat Homologué
+              </li>
+            </ul>
+            <button routerLink="/apropos" class="homebtn"
+            >En savoir plus sur nous</button>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <!-- about-img -->
+          <div class="about-img">
+            <div class="about-font-img d-none d-lg-block">
+              <img
+                src="../../../../../assets/front/img/gallery/about2.png"
+                alt=""
+              />
+            </div>
+            <div class="about-back-img">
+              <img
+                src="../../../../../assets/front/img/gallery/about1.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- About Law End-->
+  <!--? Count Down Start -->
+  <div
+    class="count-down-area pt-90 pb-60 section-bg"
+    [ngStyle]="{
+      backgroundImage: 'url(../../../assets/front/img/gallery/section_bg01.png)'
+    }"
+  >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12">
+          <div class="count-down-wrapper">
+            <div class="row justify-content-between">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <!-- Counter Up -->
+                <div class="single-counter text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="72px"
+                    height="69px"
+                  >
+                    <image
+                      x="0px"
+                      y="0px"
+                      width="72px"
+                      height="69px"
+                      xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABFCAMAAADerVCrAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB11BMVEUXmnP///8XmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnMXmnP///8qvp8aAAAAm3RSTlMAAFDr4uMPOMDMwtJjMzzHMMguXAUTrvgdzuXda/4UIr+7NTa2pVX1F7iKibnzFUFEvYcv8j7xn9+ewYPkQvARLeoCLMOAc3KBRdaFhoRW+u5XA/wIOWTaeA4rk69LHJyLKdH2qeyiqgwYs6Cn3Foktw1MbwlYaZk0lNmCEkftSRDUGVsHJaiyuhoKd+jnrfQb4Uislgt118pnASfW+mcAAAABYktHRAH/Ai3eAAAAB3RJTUUH5AUFDBg2+oR40gAAAoxJREFUWMPtmOlfEkEYxycxAQVCFJUVSMpVCBBRFMmENMxCUFO7Lc3yyg47zG677/uu3z/bLtfu+pl9sQu86BO/F+wzv332y87D7MwOhGRUoYEqaSqIVJXqOMD2LSCgiqhQFVBKkFanVySdVgZUrbQ+1TKgGhiMCmRAjSzIpKQ+pjKoDCopaAfMSkBm1MqALHVKOITUWUo9jRQNVG9VRrHWy4AaGpuUcJoaG/6ZcVQGlUHFANnANCsQA5sMyO5QtvQ77HLTiHOnIjlLPB+1uFSoZStol9pXSGC3BNQKtk2VWLSKOVq0u9WUiBB3O7Sipgd71HEI8cInNEzwd9CSnIFOkQJOWk6HX/Q8BNFFy+kOScsaMtOyuhDMhT3opS5EYfSJ34b7EKFlWXvRkw33op/afQZGcdOIfdS0fugywQCiMVrCfgwOidtDgzhAy4tFMZAO4himftNBsFKDxQg18RDi/OEwkKDuEDRgpAYDDTUxAXRyoFH1T4egZPrnCyvZONAUTg+fFLykQHmR4j7HMD5RoMZxhANNRqYKrdBUZDJ9Z9OxAjVdaG0k2lYklUH/NwiIHJUMrGO13KA/fuKk2Dt1OsqZM2ckiW0+zqtMns2MRTIbB+aEs+fmcX4mfIHBQkAwRwAbu+gClpbz3ooHuLh66TJwhWS7dnUNvmvZ09eBGzf5YN2BW7lrNjB/mz+67+BubrfSPYF79/ngwQKS+RqN4uEmbz4aRii3cKw8xsYTPjDrhWXIADzlj8/sQO6vrOU1eJ5nQWQdaH6x+hJ49Tp/729YILjI6oG3QidN7/B+KfzhIxKiBWUOiM9mQORT6jNXOdeYpJpfvnKe/5tF7H3/8ZMzf/3+Iza1EeAvtr05pHWuTqcAAAAASUVORK5CYII="
+                    />
+                  </svg>
+                  <span class="counter color-green">250</span>
+                  <p class="color-green">+ Etudiant Inscrits</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <!-- Counter Up -->
+                <div class="single-counter text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="72px"
+                    height="79px"
+                  >
+                    <image
+                      x="0px"
+                      y="0px"
+                      width="72px"
+                      height="79px"
+                      xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABPCAMAAAB/NnPNAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACo1BMVEX///8tMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJItMJL///9r5VNNAAAA33RSTlMAACpgeYRyURmH3McEAnb16q6Shb3VOg23sT8DDGLb+2kKSQmYD6PjJGv+72dOLlDAfNdwXvxI4QaRsJ5/GzXxFwdcbfAeFflCdPIvuHum/ZUcZovQWLwllhYrq/qAFFaGmWX09zaX5KETzczuLZt6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"
+                    />
+                  </svg>
+                  <span class="counter color-blue">500</span>
+                  <p class="color-blue">+ Cours Téléchargés</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <!-- Counter Up -->
+                <div class="single-counter text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="72px"
+                    height="71px"
+                  >
+                    <image
+                      x="0px"
+                      y="0px"
+                      width="72px"
+                      height="71px"
+                      xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABHCAMAAACTZfGgAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACvlBMVEX///8tmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhctmhf////Z9I0RAAAA6HRSTlMAALv77U7Cw9xSvDlMUGXKT1MeBO5aEf3YVB/vqSMCAxI4Lof3EMfXuqcKVoNFLGjIUQ8NXXBsZMyWGqYVKi2EDkFtAS86NjNA8x3njJoUQ18IoGvkzWmkcmNg36uvwLRKF/6bJbnGfRvpsPWtZ4shdOwMNPQJxDH5Sc6Bar+jwSLL1tOyJpN30fwLtzwyWBiXgHqClTtX8jVEQhzUeFwpE52KtVvqlHF2IBaz8cXwKDfgYX7biIXJpTDdBtIH2Yn45q5I3nt8Sz2xeXPjz5j64Z7aK1Xihpz2n+Wiqrgkb5lHGai96Kx1fW7M+gAAAAFiS0dEAIgFHUgAAAAHdElNRQfkBQUMHhhwCNKbAAAEtklEQVRYw+2Y+1dUVRTHOYSAolgwiAQCQgiITigakAQiMChkIK8B8hEkSAQU6PhCI95vzCwVhDQFo0yzDALzUWlKb+mhmVr2/v4ZnXPnDjOXmXPvlKxWq+X3h9l7zrrnc89j7zP7jI2NKNt7ICe7ScSibMwE2DtwZe8ITLYWNIXIyIkOaqqVIHs50DQ4T8e91oEc5ED3wcVVZWl2fx/kRma4W5idBdBMeZAHIfd7ms/OHDTTSxFEZpnPzhxk1tfbx1sv1zEQ8TWbnTlotp/0CX9jMD4QQDzgpG+eM252FtYoUApyC7IVFRQ8l4Rg3nwm9YOgyy4PCpVbowWm6bLwDrY/bNHih/QKj4DLHYBMFImHJwa05L8KinrEGlB0zFIFUKw7VMvi+KD4BI1Gk7h8BZIUQMl4lB6pKx/jgFIMoZIq7PkqqcKMoHikEe/0DGRyQFnQZufkPo7V1PczP7jXjIEiEMX8teCAcuGx7om8fDxJ/fUFhfZSFW7Qg4qILyKF0ame4oBSMbkYcH+6RHbXkkgpyp6h7rNw44IS6KjV5Q6yoAqSQedZsJG4byLcqS0nREewmfpbtkoXaNEYiCRgw7YSYDsqeaAdcNxZ/FyV4D9fXRNoVE1tihFUB2rrG4B6HmhLhvByz0aZqQWjHk2C11zND0ifChovuha5FNHmt6KNOWVoV0yRjsxdXNALEAfkCX6u6RbPq9xd+eIegA96CdjB7Mto4IP2iju0j6X2/s5Yibo6XUTQAWa7MYMPckbPKwcP1eJV6mvMU6SaAQ5Dy4waRwgflIvevqO5oBlJyKHSxtckyu6fz7q24nVm3qjSyIBS0RUOZHoek9k1vGn6jQtqIzHHyYlCFglvnWxvT2yvGMdxQzYzvW/7yoHeQYcPe2kV/TipX5dT40AqxDHzrrDUXFC4uKoMtLRnYHDQ3z9aymnDoLBCQjryQUVex0PnhL63zoMf18hjZgjDsiBF6XCamffF4P7noAF2zhAyCTnyoKTizNozZ7qn7OVwziJZsOcQIA9yFhebVbgBp84flup8ShiaI2jlvl8IffntF0o70+03lRf5QAV8uOAj/YrLBuSFMVDcrEQ/qdoX6vJXtgz0AReVI1s/orXcTasTbgEpSqBcfakoRFvUso/7TXQpnZYD3mglXX1bLxMlkDMutY2MjGAnsXCMsF8yaGmzhiiCQsQ+n7BnhjtHTNSpZm0X7YBmV2XQqqxPG/v7Gz+LJhx9js1HJqTQqvqCBvdEgOgRsvpfqyGDrAR9qQT6SjtkjbQqhYI9sxlW6kqALOiu7ur/JWDUyeQrLSRCaRp83SO5sH3TcILdaS5LsvfbAtr23dUDYs9rDkCZEXSwCd+vue71A8pjjV2yaZU/dMMWuGmslnbdAo6lBTvCeB/5sRUFYaI/FfhJx57ryEeWoc9tNG1kNu8ozhkuhPEq7GGlls3P5bg6NoxB2G1jNmA39iUa3tiN278wZzgCowZkDtDL7Nl0YJqY/RWtuLXeQOoATv+aVgcEGQ+tuUPAbzeGIgCTC0Xb70i+eb1kE2rUxmOkDHC4JpKKYq7QlbMNkfxpc+EP2rYiUvLvS8ufgbRxemmc6Xk0exT4C5sHAOBlXXP3AAAAAElFTkSuQmCC"
+                    />
+                  </svg>
+                  <span class="counter color-green">500</span>
+                  <p class="color-green">+ Etudiants Certifiés</p>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <!-- Counter Up -->
+                <div class="single-counter text-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    width="72px"
+                    height="69px"
+                  >
+                    <image
+                      x="0px"
+                      y="0px"
+                      width="72px"
+                      height="69px"
+                      xlink:href="data:img/png;base64,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"
+                    />
+                  </svg>
+                  <span class="counter color-red">21</span>
+                  <p class="color-red">+ Formateurs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Count Down End -->
+  <!--? Testimonial Start -->
+  <div
+    class="testimonial-area fix pt-180 pb-180 section-bg"
+    [ngStyle]="{
+      backgroundImage: 'url(../../../assets/front/img/gallery/section_bg03.png)'
+    }"
+  >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9 col-md-9">
+          <div class="h1-testimonial-active">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                ></li>
+                <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div
+                    class="single-testimonial pt-65"
+                  >
+                    <div class="testimonial-icon mb-45">
+                      <img
+                        src="../../../../../assets/front/img/gallery/testimonial.png"
+                        class="ani-btn"
+                        alt=""
+                      />
+                    </div>
+                    <div class="testimonial-caption text-center">
+                      <p>
+                        Vous ne pouvez pas réussir si vous vous contentez de
+                        faire comme les autres.
+                      </p>
+                      <div class="testimonial-ratting">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                       </div>
-                </div>
-                <!-- Categories Area End -->
-
-                <!-- <div class="container">
-                    <div class="row justify-content-center">
-                  
-                      <div class="col-md-6">
-                        
-                            <span class="subheading">Notre Devise</span>
-                            <h3 class="mmmmm" style="font-size:42px;">Le meilleur investissement c'est celui que vous faites en vous même.</h3>
-                           
+                      <div class="rattiong-caption">
+                        <span>Amine<span> - Amri</span> </span>
                       </div>
-                  
-                      <div class="col-md-6">
-                  <img style="position: relative;" height="80%" width="100%" src="../../../../../assets/front/img/gallery/4639954.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div
+                    class="single-testimonial pt-65"
+                    style="padding-top: 0px"
+                  >
+                    <div class="testimonial-icon mb-45">
+                      <img
+                        src="../../../../../assets/front/img/gallery/testimonial.png"
+                        class="ani-btn"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="testimonial-caption text-center">
+                      <p>
+                        Une formation excellente qui couvre toutes les notions du marketing digitale.
+                      </p>
+
+                      <div class="testimonial-ratting">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                       </div>
-                  
-                    </div>
-                  </div> -->
-                <!-- <section  class="section-padding video-section2 clearfix" >
-                    <div class="container">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="section-heading">
-                            <span class="subheading">Notre Devise</span>
-                            <h3 class="mmmmm" style="font-size:42px;">Le meilleur investissement c'est celui que vous faites en vous même.</h3>
-                            </div>
-                          </div>
-                      
-                          <div class="col-md-6">
-                            <video class="lazy"  width="100%" height="30%" controls playsinline  autoplay loop muted>
-                                <source data src="../../../../../assets/front/img"
-                                        type="video/mp4">
-                                Sorry, your browser doesn't support embedded videos.
-                            </video>
-                          </div>
-                      
-                        </div>
+                      <div class="rattiong-caption">
+                        <span>Fatma<span> -Gharbi</span> </span>
                       </div>
-                </section> -->
-
-
-
-        <!-- Count Down End -->
-                <!--? Popular Course Start -->
-                <div class="popular-course section-padding30">
-                    <div class="container">
-                        <div class="row justify-content-sm-center">
-                            <div class="cl-xl-7 col-lg-8 col-md-10">
-                                <!-- Section Tittle -->
-                                <div class="section-tittle text-center mb-70">
-                                    <span>Cours le plus populaire de cette semaine</span>
-                                    <h2>Notre cours populaire</h2>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6"
-                            *ngFor="let item of datacourse">
-                                <!-- Single course -->
-                                <div class="single-course mb-40">
-                                    <div class="course-img">
-                                        <img height="200px" width="100px"
-                                        src="{{imagepath}}{{item.photo}}" >
-                                    </div>
-                                    <div class="course-caption">
-                                        <div class="course-cap-top">
-                                            <h4><a href="#">{{item.title}}</a></h4>
-                                        </div>
-                                        <div class="course-cap-mid d-flex justify-content-between">
-                                            <ul>
-                                                <li><i class="ti-user"></i> 
-                                                    Avec {{item.Formateur.name}}{{item.Formateur.prenom}}
-                                                </li>
-                                            </ul>
-                                            <i class="ti-money"> {{item.prix}} DT</i>
-                                        </div>
-                                        <div class="course-cap-bottom d-flex justify-content-between">
-                                            <ul>
-                                                <li><i class="ti-time"></i>{{item.duree}}</li>
-                                                
-                                            </ul>
-                                            <!-- <span>Free</span> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Section Button -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="browse-btn2 text-center mt-50">
-                                    <a routerLink="/nosformations" class="btn btn-primary">Trouver plus de cours</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                  </div>
                 </div>
-                <!-- Popular Course End -->
-
-                        <!--? Team Ara Start -->
-        <div class="team-area pt-160 pb-160 section-bg" [ngStyle]="{backgroundImage:'url(../../../assets/front/img/gallery/section_bg02.png)'}">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="cl-xl-7 col-lg-8 col-md-10">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle section-tittle2 text-center mb-70">
-                            <span>En savoir plus sur notre faculté</span>
-                            <h2>Nos meilleurs professeurs</h2>
-                        </div> 
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6" 
-                    *ngFor="let item of dataformateur">
-                        <div class="single-team mb-30">
-                            <div class="team-img">
-                                <img height="300px" width="150px" src="{{imagepath}}{{item.photo}}"
-                             alt="{{item.title}}">
-                                <!-- Blog Social -->
-                                <ul class="team-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="team-caption">
-                                <h3><a routerLink="/formateurs">{{item.name}} {{item.prenom}}</a></h3>
-                                <p>{{item.post}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Section Button -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="browse-btn2 text-center mt-70">
-                            <a routerLink="/formateurs" class="btn btn-primary">Voir tous les professeurs</a>
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
+          </div>
         </div>
-        <!-- Team Ara End -->
-                <!--? About Law Start-->
-                <div class="about-area section-padding2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="about-caption mb-50">
-                                    <!-- Section Tittle -->
-                                    <div class="section-tittle mb-35">
-                                        <span>En savoir plus sur notre entreprise</span>
-                                        <h2>Pour en savoir plus</h2>
-                                    </div>
-                                    <p>On vous garantie une formation éfficace et un certificat Homologué dans plusieurs domaines technologiques et Soft Skills qui vous facilitent par l'integration au marché d'emploi.</p>
-                                    <ul>
-                                        <li><span class="flaticon-business"></span>Design moderne & réactif</li>
-                                        <li><span class="flaticon-communications-1"></span>Créez votre site Web de manière professionnelle</li>
-                                        <li><span class="flaticon-graduated"></span>Certificat Homologué</li>
-                                    </ul>
-                                    <a routerLink="/apropos" class="btn">En savoir plus sur nous</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <!-- about-img -->
-                                <div class="about-img ">
-                                    <div class="about-font-img d-none d-lg-block">
-                                        <img src="../../../../../assets/front/img/gallery/about2.png" alt="">
-                                    </div>
-                                    <div class="about-back-img ">
-                                        <img src="../../../../../assets/front/img/gallery/about1.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- About Law End-->
+      </div>
+    </div>
+  </div>
+  <!-- Testimonial End -->
+  <!--? Blog Area Start -->
+  <div class="container mt-100 mt-60">
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="section-title mb-4 pb-2">
+          <h4 class="title mb-4">Dernières nouvelles du blog</h4>
+        </div>
+      </div>
+      <!--end col-->
+    </div>
+    <!--end row-->
 
-                        <!--? Testimonial Start -->
-        <div class="testimonial-area fix pt-180 pb-180 section-bg" style="height: 600px;"
-         [ngStyle]="{backgroundImage:'url(../../../assets/front/img/gallery/section_bg03.png)'}">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-9 col-md-9">
-                        <div class="h1-testimonial-active">
-
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                  <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
-                                </ol>
-                                <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                    <div class="single-testimonial pt-65" style="padding-top: 0px;">
-                                        <div class="testimonial-icon mb-45">
-                                            <img src="../../../../../assets/front/img/gallery/testimonial.png" class="ani-btn " alt="">
-                                        </div>
-                                        <div class="testimonial-caption text-center">
-                                            <p>Vous ne pouvez pas réussir si vous vous contentez de faire ce que 
-                                                les autres.</p>
-                                            <div class="testimonial-ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <div class="rattiong-caption">
-                                                <span>Amine<span> - Amri</span> </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </div>
-                                  <div class="carousel-item">
-                                    <div class="single-testimonial pt-65" style="padding-top: 0px;">
-                            
-                                        <div class="testimonial-icon mb-45">
-                                            <img src="../../../../../assets/front/img/gallery/testimonial.png" class="ani-btn " alt="">
-                                        </div>
-                                           
-                                        <div class="testimonial-caption text-center">
-                                            <p>font et et que vous suivez le chemin tout tracé.
-                                                Vous devez créer un nouveau et original pour vous-même.</p>
-                                            
-                                            <div class="testimonial-ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <div class="rattiong-caption">
-                                                <span>Fatma<span> -Gharbi</span> </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Next</span>
-                                </a>
-                              </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row justify-content-center">
+      <div
+        class="col-lg-4 col-md-12"
+        *ngFor="
+          let item of datablog
+            | paginate: { id: 'blog', itemsPerPage: 3, currentPage: p }
+        "
+      >
+        <div class="blog-post rounded border">
+          <div class="blog-img d-block overflow-hidden position-relative">
+            <img
+              style="width: 100%; height: 100%"
+              src="{{ imagepath }}{{ item.photo }}"
+              alt="{{ item.title }}"
+              class="img-fluid rounded-top"
+            />
+            <div class="overlay rounded-top bg-dark"></div>
+            <div class="post-meta">
+              <a (click)="SendIdBlog(item.id)" class="text-light read-more"
+                >Read More <i class="mdi mdi-chevron-right"></i
+              ></a>
             </div>
-        </div>
-        <!-- Testimonial End -->
-
-          <!--? Blog Area Start -->
-          <div class="container mt-100 mt-60">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="section-title mb-4 pb-2">
-                        <h4 class="title mb-4">Dernières nouvelles du blog</h4>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-        
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mt-4 pt-2" 
-                *ngFor="let item of datablog">
-                    <div class="blog-post rounded border">
-                        <div class="blog-img d-block overflow-hidden position-relative">
-                            <img height="350px" width="350px" src="{{imagepath}}{{item.photo}}"
-                            alt="{{item.title}}" class="img-fluid rounded-top">
-                            <div class="overlay rounded-top bg-dark"></div>
-                            <div class="post-meta">
-                                <a (click)="SendIdBlog(item.id)" class="text-light read-more">Read More <i class="mdi mdi-chevron-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="content p-3">
-                            <small class="text-muted p float-right">{{item.createdAt|date:'yyyy-dd-MM'}}</small>
-                            <small><a class="text-primary">{{item.Category.name}}</a></small>
-                            <h4 class="mt-2"><a (click)="SendIdBlog(item.id)" class="text-dark title">{{item.title}}</a></h4>
-                            <p class="text-muted mt-2"> {{ (item.desc.length>100)? (item.desc | slice:0:90)+'..':(item.desc) }}</p>
-                            <div class="pt-3 mt-3 border-top d-flex">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="img-fluid avatar avatar-ex-sm rounded-pill mr-3 shadow" alt="">
-                                <div class="author mt-2">
-                                    <h6 class="mb-0"><a class="text-dark name">{{item.User.username}}</a></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end blog post-->
-                </div><!--end col-->
-            </div><!--end row-->
-        </div>
-        <br>
-        <br>
-        <br>
-
-
-        <section class="partenaires">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <div class="section-title mb-4 pb-2">
-                        <h4 class="title mb-4">NOS PARTENAIRES</h4>
-                    </div>
-                </div><!--end col-->
-            </div><!--end row-->
-            <div class="container-fluid">
-                <div class="slider-wrap">
-                <div class="slider-main">
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                             src="../../../../../assets/front/img/partenaire/img (1).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (2).png" alt="">     
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (3).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (4).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (5).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (6).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (7).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (8).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (9).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (10).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (11).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (12).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (13).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (14).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (13).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (14).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (15).png" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="text">
-                            <img height="150px" width="250px"
-                            src="../../../../../assets/front/img/partenaire/img (16).png" alt="">
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="button-area">
-                    <button type="button" class="prev" appPrev>Prev</button>
-                    <button type="button" class="next" appNext>Next</button>
-                </div>
-                </div>
+          </div>
+          <div class="content p-3">
+            <small class="text-muted p float-right"
+              ><i class="fa fa-calendar-check-o">
+                {{ item.createdAt | date: "yyyy-dd-MM" }}</i
+              >
+            </small>
+            <small
+              ><a class="text-primary">{{ item.Category.name }}</a></small
+            >
+            <h4 class="mt-2">
+              <a (click)="SendIdBlog(item.id)" class="text-dark title">{{
+                item.title
+              }}</a>
+            </h4>
+            <p class="text-muted mt-2">
+              {{
+                item.desc.length > 100
+                  ? (item.desc | slice: 0:90) + ".."
+                  : item.desc
+              }}
+            </p>
+            <div class="pt-3 mt-3 border-top d-flex">
+              <img
+                src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                class="img-fluid avatar avatar-ex-sm rounded-pill mr-3 shadow"
+                alt=""
+              />
+              <div class="author mt-2">
+                <h6 class="mb-0">
+                  <a class="text-dark name">{{ item.User.username }}</a>
+                </h6>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
 
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <!-- Blog Area End -->
-    </main>
+      <!--end col-->
+    </div>
+    <br />
+    <br />
+    <!--end row-->
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <pagination-controls
+          id="blog"
+          class="my-pagination"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <section class="partenaires">
+    <div class="container-fluid">
+      <h4 class="title mb-4" style="text-align: center;">NOS PARTENAIRES</h4>
+      <div class="slider-wrap">
+        <div class="slider-main">
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (1).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (2).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (3).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (4).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (5).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (6).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (7).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (8).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (9).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (10).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (11).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (12).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (13).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (14).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (13).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (14).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (15).png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="item">
+            <div class="text">
+              <img
+                height="150px"
+                width="300px"
+                src="../../../../../assets/front/img/partenaire/img (16).png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="button-area">
+          <button type="button" class="prev" appPrev>Prev</button>
+          <button type="button" class="next" appNext>Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <!-- Blog Area End -->
+</main>

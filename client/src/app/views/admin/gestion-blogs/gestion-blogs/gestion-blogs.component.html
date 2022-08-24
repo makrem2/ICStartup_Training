@@ -30,7 +30,9 @@
                     <tbody>
                         <tr *ngFor="let item of dataBlogs ;index as i">
                             <td>{{item.title}}</td>
-                            <td>{{item.desc}}</td>
+                            <td>
+                              {{ (item.desc.length>100)? (item.desc | slice:0:90)+'..':(item.desc) }}
+                            </td>
                             <td><img src="{{imagepath}}{{item.photo}}"
                                 height="100px" alt="{{item.title}}"></td>
                             <td>{{item.username}}</td>
@@ -82,6 +84,7 @@
             <div class="form-group">
                 <label for="exampleFormControlInput1">Description</label>
                 <textarea
+                rows="15"
                 type="text"
                 class="form-control"
                 id="desc"

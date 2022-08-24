@@ -29,11 +29,11 @@
                                 <div class="form-group">
                                     <div class="form-group">
                                         <textarea cols="30" rows="9" class="form-control w-100"
-                                         name="yourmessage" id="yourmessage" placeholder=" Enter Message"
+                                         name="yourmessage" id="yourmessage" placeholder="Entrez votre message "
                                          #yourmessage="ngModel" ngModel
                                          ></textarea>
                                          <div class="alert alert-danger" *ngIf="yourmessage.errors?.required && yourmessage.touched">
-                                            Message is required
+                                            Message Obligatoire 
                                             </div>
                                     </div>
                                  
@@ -43,33 +43,33 @@
                                 <div class="form-group">
                                     <input class="form-control valid" name="yourname"
                                      id="yourname" type="text"
-                                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name"
+                                      onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Entrez votre Nom"
                                       #yourname="ngModel"ngModel
                                       >
                                       <div class="alert alert-danger" *ngIf="yourname.errors?.required && yourname.touched">
-                                        name is required
+                                        Nom Obligatoire 
                                         </div>
                                     </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="youremail" id="youremail"
-                                     type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email"
+                                     type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Entrez votre Email"
                                      #youremail="ngModel"ngModel
                                      >
                                      <div class="alert alert-danger" *ngIf="youremail.errors?.required && youremail.touched">
-                                        email is required
+                                        Email Obligatoire 
                                         </div>
                                     </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <input class="form-control" name="yoursubject" id="yoursubject"
-                                     type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject"
+                                     type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrez le Sujet'" placeholder="Entrez le Sujet"
                                      #yoursubject="ngModel"ngModel
                                      >
                                      <div class="alert alert-danger" *ngIf="yoursubject.errors?.required && yoursubject.touched">
-                                        Subject is required
+                                        Email Sujet
                                         </div>
                                     </div>
                             </div>
@@ -81,7 +81,7 @@
                               {{messagesucces}}
                             </div>
                         <div class="form-group mt-3">
-                            <button [disabled]="f.invalid" class="button button-contactForm boxed-btn">Send</button>
+                            <button [disabled]="f.invalid" class="button button-contactForm boxed-btn">Envoyez</button>
                         </div>
                     </form>
                 </div>

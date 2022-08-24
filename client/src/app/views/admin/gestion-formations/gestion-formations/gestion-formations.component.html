@@ -9,7 +9,8 @@
             <h6 class="m-0 font-weight-bold text-primary">All Formations</h6>
         </div>
         <div class="card-body">
-            <button type="button" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#addmodal">
+            <button type="button"
+            (click)=" RestMessage()" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#addmodal">
                 Add Formations
               </button>
             <br>
@@ -21,7 +22,7 @@
                             <th>title</th>
                             <th>desc</th>
                             <th>photo</th>
-                            <th>username</th>
+                            <th>Type</th>
                             <th>prix</th>
                             <th>duree</th>
                             <th>CategoryId</th>
@@ -48,11 +49,13 @@
                                 <button class="btn btn-info" (click)="getdata(item.title,item.desc
                                 ,item.id,item.username,item.prix,item.duree,item.CategoryId,item.FormateurId,item.UserId,
                                 item.photo )"
-                                 data-toggle="modal" data-target="#Modifiermodal">Modifier</button>
-                                <button class="btn btn-danger" (click)="deleteformation(item.id,i)">Delete</button>
+                                 data-toggle="modal" data-target="#Modifiermodal"
+                                 (click)="RestMessage()">Modifier</button>
+                                <button class="btn btn-danger"
+                                data-toggle="modal" (click)="deleteformation(item.id,i)" >Delete</button>
                             </td>
                         </tr>
-
+<!-- -->
                     </tbody>
                 </table>
             </div>
@@ -60,6 +63,23 @@
     </div>
 
 </div>
+
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Do you went to delete this formation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button"   class="btn btn-danger">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 <!-- /.container-fluid -->
   
 <!-- ADdModal -->
@@ -73,7 +93,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #f="ngForm" (ngSubmit)="addformation(f)">
+        <form #f="ngForm" (ngSubmit)="addformation(f);f.resetForm()">
           <div class="form-group">
             <label for="exampleFormControlInput1">Title</label>
             <input
@@ -114,7 +134,24 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlInput1">Username</label>
+              <label for="exampleFormControlInput1">Type</label>
+              <select
+              class="browser-default custom-select"
+              id="username"
+              required
+              name="username"
+              #username="ngModel" ngModel
+            >
+              <option selected [ngValue]="null" disabled>Choose a Type</option>
+              <option *ngFor="let item of dataArraycategorie" value="{{item.name}}">
+                {{item.name}}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="username.errors?.required && username.touched">
+              Type is required
+            </div>
+        </div>
+            <!-- <div class="form-group">
+              <label for="exampleFormControlInput1">Type</label>
               <input
               type="text"
               class="form-control"
@@ -124,9 +161,9 @@
               #username="ngModel" ngModel
             />
             <div class="alert alert-danger" *ngIf="username.errors?.required && username.touched" >
-              Username is required
+              Type is required
             </div>
-          </div>
+          </div> -->
           <div class="form-group">
               <label for="exampleFormControlInput1">Prix</label>
               <input
@@ -174,8 +211,9 @@
               name="forma"
               #forma="ngModel"ngModel
               >
-              <option [ngValue]="null" disabled>---Select---</option>
-              <option *ngFor="let item of dataformateur" value="{{item.id}}">{{item.name}}</option>
+              <option [selected]="true" [ngValue]="null" disabled>---Select---</option>
+              <option *ngFor="let item of dataformateur" value="{{item.id}}">{{item.name}}    
+                {{item.prenom}}</option>
               </select>
 
           </div>
@@ -206,15 +244,7 @@
         </button> 
       </div>
       <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlInput1">Photo</label>
-              <div class="input-group mb-3">
-                      <img src="{{imagepath}}{{data.photo}}" 
-                      height="200px" width="100%"
-                      alt="">
-                </div>
-            </div>
+          <form #fM="ngForm" (ngSubmit)="updateformations(fM)">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Title</label>
                 <input
@@ -246,7 +276,22 @@
                 </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Username</label>
+                  <label for="exampleFormControlFile1">Photo</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                  required
+                  name="path"
+                  #path="ngModel" ngModel
+                   (change)="selectImage($event)" />
+                   <br>
+                   <img src="{{imagepath}}{{data.photo}}" 
+                   height="200px"
+                   alt="">
+                   <div class="alert alert-danger" *ngIf="path.errors?.required && path.touched">
+                    Photo is required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Type</label>
                   <input
                   type="text"
                   class="form-control"
@@ -257,7 +302,7 @@
                   #usernamee="ngModel" ngModel
                 />
                 <div class="alert alert-danger" *ngIf="usernamee.errors?.required && usernamee.touched">
-                  Username is required
+                  Type is required
                 </div>
               </div>
               <div class="form-group">
@@ -296,11 +341,11 @@
                     id="pCategory"
                     name="pCategory"
                     #categoriee="ngModel"ngModel
+                    [ngModel]="ModfierCategorie"
                   >
-                    <option  [ngValue]="null" disabled>Choose a Category</option>
-                    <option *ngFor="let item of dataArraycategorie" value="{{item.id}}"
-                    [selected]="data.CategoryId"
-                    >{{item.name}}</option>
+                    <option selected [ngValue]="null" disabled>Choose a Category</option>
+                    <option *ngFor="let item of dataArraycategorie" value="{{item.id}}">
+                      {{item.name}}</option>
                   </select>
                   <div class="alert alert-danger" *ngIf="categoriee.errors?.required && categoriee.touched">
                     Category is required
@@ -312,10 +357,10 @@
                   id="pformateur"
                   name="pformateur"
                   #formateurr="ngModel"ngModel
+                  [ngModel]="ModfierFormateur"
                   >
-                  <option  [ngValue]="null" disabled>Choose a Formateur</option>
+                  <option  selected [ngValue]="null" disabled>Choose a Formateur</option>
                   <option *ngFor="let item of dataformateur" value="{{item.id}}"
-                  [selected]="data.FormateurId"
                   >{{item.name}}</option>
                 </select>
                 <div class="alert alert-danger" *ngIf="formateurr.errors?.required && formateurr.touched">
@@ -328,12 +373,14 @@
               <div class="alert alert-danger" *ngIf="messageErr" >
                 {{messageErr}}
               </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-success" [disabled]="fM.invalid">Modifier Formation</button>
+              </div>
             </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Modifier Formation</button>
-      </div>
+
     </div>
   </div>
 </div>

@@ -50,14 +50,17 @@ const getOneEvenement = async (req, res) => {
 // 4. update Evenement
 
 const updateEvenement = async (req, res) => {
-
-    let id = req.params.id
-
-    const evenement = await Evenement.update(req.body, { where: { id: id }})
-
-    res.status(200).send(evenement)
+  Evenement.update({
+    title: req.body.title,
+    description:req.body.description,
+    photo: req.file.path,
+    date:req.body.date,
+    CategoryId:req.body.CategoryId,
+    UserId:req.body.UserId
+},{where:{id:req.params.id}})
+.then((response)=>res.status(200).send(response))
+.catch((err)=>res.status(400).send(err))
    
-
 }
 
 // 5. delete Evenement by id

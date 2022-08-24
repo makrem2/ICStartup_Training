@@ -43,18 +43,21 @@ const getOneFormateur = async (req, res) => {
 
 }
 
-// 4. update Category
+// 4. update Formateur
 
 const updateFormateur = async (req, res) => {
 
-    let id = req.params.id
-
-    const formateur = await Formateur.update(req.body, { where: { id: id }})
-
-    res.status(200).send(formateur)
-   
+    Formateur.update({
+    name: req.body.name,
+    prenom:req.body.prenom,
+    photo: req.file.path,
+    post:req.body.post
+},{where:{id:req.params.id}})
+.then((response)=>res.status(200).send(response))
+.catch((err)=>res.status(400).send(err))
 
 }
+
 
 // 5. delete Formateur by id
 

@@ -10,7 +10,7 @@ router.get('/getAllFormateur',formateurController.getAllFormateur)
 
 router.get('/getOneFormateur',formateurController.getOneFormateur)
 
-router.patch('/updateFormateur/:id',formateurController.updateFormateur)
+router.patch('/updateFormateur/:id',formateurController.upload,formateurController.updateFormateur)
 
 router.delete('/deleteFormateur/:id',formateurController.deleteFormateur)
 

@@ -1,12 +1,13 @@
 module.exports=(sequelize,DataType)=>{
     const Formation=sequelize.define("Formation",{
         title: {
-          type:DataType.STRING,
+          type:DataType.STRING(15000),
           allowNull:false
           },
           desc: {
-            type:DataType.STRING,
-            allowNull:false
+            type:DataType.STRING(15000),
+            allowNull:false,
+            length:1000
           },
           photo: {
             type:DataType.STRING,

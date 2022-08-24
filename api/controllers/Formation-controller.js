@@ -52,14 +52,37 @@ const getOneFormation = async (req, res) => {
 // 4. update Formation
 
 const updateFormation = async (req, res) => {
+  if(req.file){
+    Formation.update({
+      title: req.body.title,
+      desc:req.body.desc,
+      photo: req.file.path,
+      username:req.body.username,
+      prix:req.body.prix,
+      duree:req.body.duree,
+      UserId :req.body.UserId,
+      FormateurId :req.body.FormateurId,
+      CategoryId :req.body.CategoryId
+  },{where:{id:req.params.id}})
+  .then((response)=>res.status(200).send(response))
+  .catch((err)=>res.status(400).send(err))
+  } else
+  {
+    Formation.update({
+      title: req.body.title,
+      desc:req.body.desc,
+      username:req.body.username,
+      prix:req.body.prix,
+      duree:req.body.duree,
+      UserId :req.body.UserId,
+      FormateurId :req.body.FormateurId,
+      CategoryId :req.body.CategoryId
+  },{where:{id:req.params.id}})
+  .then((response)=>res.status(200).send(response))
+  .catch((err)=>res.status(400).send(err))
+  }
 
-    let id = req.params.id
-
-    const formation = await Formation.update(req.body, { where: { id: id }})
-
-    res.status(200).send(formation)
    
-
 }
 
 // 5. delete Formation by id
@@ -89,7 +112,12 @@ const deleteFormation = (req, res) => {
   };
 
 
+  const getFormationByCategorie = async (req, res) => {
 
+    let id = req.params.id
+    let formation = await Formation.findAll({ where: { username : id },include:[db.Category,db.Formateur,db.User]})
+    res.status(200).send(formation)
+}
 
 
 
@@ -128,6 +156,7 @@ module.exports = {
     getAllFormation,
     getOneFormation,
     updateFormation,
-    deleteFormation
+    deleteFormation,
+    getFormationByCategorie
 
 }

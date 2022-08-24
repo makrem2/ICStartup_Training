@@ -16,8 +16,12 @@ const routes: Routes = [
     {path:'evenements',loadChildren:()=>import('./views/front/evenement/evenement.module').then(m=>m.EvenementModule)},
     {path:'formateurs',loadChildren:()=>import('./views/front/formateur/formateur.module').then(m=>m.FormateurModule)},
     {path:'inscription',loadChildren:()=>import('./views/front/inscription/inscription.module').then(m=>m.InscriptionModule)},
-    {path:'detail-blog',loadChildren:()=>import('./views/front/detail-blog/detail-blog.module').then(m=>m.DetailBlogModule)}
-  
+    {path:'detail-blog',loadChildren:()=>import('./views/front/detail-blog/detail-blog.module').then(m=>m.DetailBlogModule)},
+    {path:'detail-formation',loadChildren:()=>import('./views/front/formationdetail/formationdetail.module').then(m=>m.FormationdetailModule)},
+    {path:'summer-academy',loadChildren:()=>import('./views/front/academieete/academieete.module').then(m=>m.AcademieeteModule)},
+    {path:'night-courses',loadChildren:()=>import('./views/front/courssoir/courssoir.module').then(m=>m.CourssoirModule)},
+    {path:'part-time-courses',loadChildren:()=>import('./views/front/part-time-courses/part-time-courses.module').then(m=>m.PartTimeCoursesModule)},
+
   ]},
   {path:'admin',component:AdminLayoutComponent,canActivate:[GuardsadminGuard],children:[
     {path:'',loadChildren:()=>import('./views/admin/dashboard/dashboard.module').then(m=>m.DashboardModule)},
@@ -36,7 +40,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

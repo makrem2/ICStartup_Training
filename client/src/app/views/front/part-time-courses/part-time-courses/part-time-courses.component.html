@@ -1,0 +1,930 @@
+<main>
+  <!--? slider Area Start-->
+  <div class="slider-area">
+    <div class="slider-active">
+      <div
+        class="single-slider slider-height d-flex align-items-center"
+        style="min-height: 580px"
+      >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-7 col-md-8">
+              <div class="hero__caption" style="right: -200px">
+                <h1
+                  data-animation="fadeInLeft"
+                  data-delay=".4s"
+                  style="font-size: 44px"
+                >
+                  Lancez et développez votre carrière pendant les week-ends !
+                </h1>
+                <p>
+                  Profitez de vos week-ends pour développer vos compétences !
+                </p>
+                <div class="hero__btn">
+                  <button (click)="goinscription()" class="Rejoignez">
+                    Rejoignez-nous le week-end
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-5">
+              <div
+                class="hero-man d-none d-lg-block f-right"
+                data-animation="jello"
+                data-delay=".4s"
+                style="
+                  position: relative;
+                  right: -160px;
+                  bottom: -31px;
+                  margin-top: -40px;
+                  width: 630px;
+                "
+              >
+                <img
+                  src="../../../../../assets/front/img/gallery/programming_5401259.png"
+                  loading="lazy"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div class="container">
+    <div class="text-center mb-2-8 mb-lg-6">
+      <h2 class="display-18 display-md-16 display-lg-14 font-weight-700">
+        <strong class="text-primary font-weight-700">Les programmes à temps partiel</strong>
+      </h2>
+      <span>Pourquoi choisir nos formations à temps partiel</span>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-sm-6 col-lg-4 mb-2-9 mb-sm-0">
+        <div class="pr-md-3">
+          <div class="text-center text-sm-right mb-2-9">
+            <div class="mb-4">
+              <img
+                src="https://via.placeholder.com/80x80/FFB6C1/000000"
+                alt="..."
+                class="rounded-circle"
+              />
+            </div>
+            <h4 class="sub-info">La solution idéale pour les professionnels</h4>
+            <p class="display-30 mb-0">
+              Permet d'acquérir de nouvelles compétences tout en
+              bénéficiant des avantages financiers liés à l'emploi.
+            </p>
+          </div>
+          <div class="text-center text-sm-right">
+            <div class="mb-4">
+              <img
+                src="https://via.placeholder.com/80x80/87CEFA/000000"
+                alt="..."
+                class="rounded-circle"
+              />
+            </div>
+            <h4 class="sub-info">
+              Vous pouvez trouver une nouvelle inspiration
+            </h4>
+            <p class="display-30 mb-0">
+              vous pouvez développer vos centres d'intérêt tout en évitant
+              d'être submergé par la transition vers un nouvel univers.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block">
+        <div class="why-choose-center-image">
+          <img
+            src="https://via.placeholder.com/350x350/FF7F50/000000"
+            alt="..."
+            class="rounded-circle"
+          />
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="pl-md-3">
+          <div class="text-center text-sm-left mb-2-9">
+            <div class="mb-4">
+              <img
+                src="https://via.placeholder.com/80x80/8A2BE2/000000"
+                alt="..."
+                class="rounded-circle"
+              />
+            </div>
+            <h4 class="sub-info">Washing services</h4>
+            <p class="display-30 mb-0">
+              Nibh roin gravida vel velit auctor aliquetenean sollicitudin,
+              lorem qui bibendum auctor.
+            </p>
+          </div>
+
+          <div class="text-center text-sm-left">
+            <div class="mb-4">
+              <img
+                src="https://via.placeholder.com/80x80/20B2AA/000000"
+                alt="..."
+                class="rounded-circle"
+              />
+            </div>
+            <h4 class="sub-info">Carpet cleaning</h4>
+            <p class="display-30 mb-0">
+              Vel proin gravida nibh velit auctor aliquetenean sollicitudin,
+              lorem qui bibendum auctor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <section class="contact-section" style="background-color: #f3e5bd"
+  id="inscription">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <h1 style="text-align: center">Rejoignez nos cours du Week-end</h1>
+
+          <h6 style="text-align: center">
+            Inscrivez-vous pour être contacté par nos consultants educatifs
+          </h6>
+          <p id="top"></p>
+        </div>
+        <div class="col-12">
+          <form
+            #f="ngForm"
+            (ngSubmit)="inscription(f)"
+            class="form-contact contact_form"
+            method="post"
+            id="contactForm"
+            novalidate="novalidate"
+          >
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    class="form-control w-100"
+                    id="prenom"
+                    required
+                    name="prenom"
+                    #prenom="ngModel"
+                    ngModel
+                    cols="30"
+                    rows="9"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'votre Prénom'"
+                    placeholder=" Prénom"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="prenom.errors?.required && prenom.touched"
+                  >
+                  Prénom Obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input
+                    class="form-control valid"
+                    id="name"
+                    required
+                    name="name"
+                    #name="ngModel"
+                    ngModel
+                    type="text"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'votre Nom'"
+                    placeholder="votre Nom"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="name.errors?.required && name.touched"
+                  >
+                  Nom Obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input
+                    [(ngModel)]="emaill"
+                    class="form-control valid"
+                    id="email"
+                    required
+                    name="email"
+                    #email="ngModel"
+                    ngModel
+                    type="email"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Votre Email adresse'"
+                    placeholder="Email"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="email.errors?.required && email.touched"
+                  >
+                  Email Obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    id="phone"
+                    required
+                    name="phone"
+                    #phone="ngModel"
+                    ngModel
+                    type="text"
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'votre Numéro téléphone'"
+                    placeholder="Enter votre téléphone"
+                  />
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="phone.errors?.required && phone.touched"
+                  >
+                  téléphone Obligatoire
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <select
+                    class="form-control"
+                    id="CategoryId"
+                    required
+                    name="CategoryId"
+                    #CategoryId="ngModel"
+                    ngModel
+                  >
+                    <!-- <option [ngValue]="null" disabled selected>---Select---</option> -->
+                    <option
+                      *ngFor="let item of datacategorie"
+                      value="{{ item.id }}"
+                    >
+                      {{ item.name }}
+                    </option>
+                    <option value="" disabled>--Sélectionnez la catégorie--</option>
+                  </select>
+
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="CategoryId.errors?.required && CategoryId.touched"
+                  >
+                  Catégorie Obligatoire
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="messageErr">
+              {{ messageErr }}
+            </div>
+            <div class="alert alert-success" *ngIf="messagesucces">
+              {{ messagesucces }}
+            </div>
+            <div class="form-group mt-3">
+              <button
+                [disabled]="f.invalid"
+                class="button button-contactForm boxed-btn"
+              >
+                Envoyez
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <link
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
+  <br />
+  <br />
+  <br />
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h1 style="text-align: center">
+          Les formations disponibles en cours du week-ends
+        </h1>
+      </div>
+      <br />
+    </div>
+
+    <div class="col-md-12">
+      <ul class="nav nav-pills nav-justified" role="tablist">
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link active" data-toggle="tab" href="#Tous" role="tab">
+            <span class="d-none d-md-block">Tous</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-home-variant h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Data" role="tab">
+            <span class="d-none d-md-block">Data</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-account h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Web" role="tab">
+            <span class="d-none d-md-block">Web</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-email h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Design" role="tab">
+            <span class="d-none d-md-block">Design</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Game" role="tab">
+            <span class="d-none d-md-block">Game</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Marketing" role="tab">
+            <span class="d-none d-md-block">Marketing</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Systéme" role="tab">
+            <span class="d-none d-md-block">Systéme</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Sécurité" role="tab">
+            <span class="d-none d-md-block">Sécurité</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+        <li class="nav-item waves-effect waves-light">
+          <a class="nav-link" data-toggle="tab" href="#Kids" role="tab">
+            <span class="d-none d-md-block">Kids</span
+            ><span class="d-block d-md-none"
+              ><i class="mdi mdi-settings h5"></i
+            ></span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active p-3" id="Tous" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourse"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  data-toggle="modal"
+                  data-target="#modal-contact"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Data" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseByData"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Web" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseByWeb"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Design" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseByDesign"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Game" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseByGame"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Marketing" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseMarketing"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Systéme" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseBySysteme"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Sécurité" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseBySecurite"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div class="tab-pane p-3" id="Kids" role="tabpanel">
+          <div
+            class="card b-1 hover-shadow mb-20"
+            *ngFor="let item of datacourseByKids"
+          >
+            <div class="media card-body">
+              <div class="media-left pr-12">
+                <img
+                  class="avatar avatar-xl no-radius"
+                  src="{{ imagepath }}{{ item.photo }}"
+                  alt="{{ item.title }}"
+                />
+              </div>
+              <div class="media-body">
+                <div class="mb-2">
+                  <span class="fs-20 pr-16">{{ item.title }}</span>
+                </div>
+                <small class="fs-16 fw-300 ls-1">{{
+                  item.Category.name
+                }}</small>
+                <p style="justify-content: center; text-align: center">
+                  {{ item.desc }}
+                </p>
+
+                <h6>
+                  Mardi et jeudi de 19h30 à 21h30 . Lundi et mercredi de 19h30 à
+                  21h30.
+                </h6>
+              </div>
+              <div class="media-right text-right d-none d-md-block">
+                <p class="fs-14 text-fade mb-12">
+                  <i class="mdi mdi-calendar-month"></i> Durée :
+                  {{ item.duree }}
+                </p>
+                <span class="text-fade"
+                  ><i class="far fa-money-bill-alt"></i>
+                  {{ item.prix }} DT</span
+                >
+              </div>
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+              <div>
+                <strong>Applied on: </strong>
+                <span> {{ item.createdAt | date: "MM/dd/yyyy" }}</span>
+              </div>
+              <div class="card-hover-show">
+                <a class="btn btn-xs fs-10 btn-bold btn-info" href="#"
+                  >Découvrir la formation</a
+                >
+                <a
+                  class="btn btn-xs fs-10 btn-bold btn-primary"
+                  (click)="goinscription()"
+                  >S'Inscrire</a
+                >
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <br />
+    </div>
+  </div>
+</main>

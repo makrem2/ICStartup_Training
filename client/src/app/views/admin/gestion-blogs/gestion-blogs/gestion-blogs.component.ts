@@ -27,12 +27,13 @@ export class GestionBlogsComponent implements OnInit {
 
   constructor(private ds:DataService,private router:Router ,private auth:AuthadminService) {
 
-    this.ds.getallBlogs().subscribe(data=>this.dataBlogs=data)
+    
     this.ds.getallcategorie().subscribe(data=>this.dataArraycategorie=data)
     this.userId = this.auth.getUserid()
    }
 
   ngOnInit(): void {
+    this.ds.getallBlogs().subscribe(data=>this.dataBlogs=data)
   }
 
 
@@ -79,6 +80,7 @@ export class GestionBlogsComponent implements OnInit {
     this.ds.addBlogs(formData).subscribe(data=>{
     //  this.router.navigate(['/admin/gestionformateurs'])
     this.messagesucces="Blog ajouter avec success"
+    this.ngOnInit();
     },(err:HttpErrorResponse)=>{
      this.messageErr=err.error
       console.log(err.error)

@@ -12,7 +12,7 @@ router.get('/getAllBlog',blogController.getAllBlog)
 
 router.get('/getOneBlog/:id',blogController.getOneBlog)
 
-router.patch('/updateBlog/:id',blogController.updateBlog)
+router.patch('/updateBlog/:id',blogController.upload,blogController.updateBlog)
 
 router.delete('/deleteBlog/:id',blogController.deleteBlog)
 

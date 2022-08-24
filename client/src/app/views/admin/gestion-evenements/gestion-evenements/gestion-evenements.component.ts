@@ -29,12 +29,13 @@ export class GestionEvenementsComponent implements OnInit {
 
   constructor(private ds:DataService,private router:Router ,private auth:AuthadminService) {
 
-    this.ds.getallevenement().subscribe(data=>this.dataevenment=data)
+    
     this.ds.getallcategorie().subscribe(data=>this.dataArraycategorie=data)
     this.userId = this.auth.getUserid()
    }
 
   ngOnInit(): void {
+    this.ds.getallevenement().subscribe(data=>this.dataevenment=data)
   }
 
   
@@ -80,7 +81,9 @@ export class GestionEvenementsComponent implements OnInit {
    
     this.ds.addevenement(formData).subscribe(data=>{
     //  this.router.navigate(['/admin/gestionformateurs'])
+    this.ngOnInit();
     this.messagesucces="Evenement ajouter avec success"
+    
     },(err:HttpErrorResponse)=>{
      this.messageErr=err.error
       console.log(err.error)

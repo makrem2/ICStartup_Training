@@ -12,7 +12,7 @@ router.get('/getAllEvenement',evenementController.getAllEvenement)
 
 router.get('/getOneEvenement/:id',evenementController.getOneEvenement)
 
-router.patch('/updateEvenement/:id',evenementController.updateEvenement)
+router.patch('/updateEvenement/:id',evenementController.upload,evenementController.updateEvenement)
 
 router.delete('/deleteEvenement/:id',evenementController.deleteEvenement)
 

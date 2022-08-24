@@ -52,12 +52,16 @@ const getOneBlog = async (req, res) => {
 
 const updateBlog = async (req, res) => {
 
-    let id = req.params.id
-
-    const blog = await Blog.update(req.body, { where: { id: id }})
-
-    res.status(200).send(blog)
-   
+  Blog.update({
+    title: req.body.title,
+    desc:req.body.desc,
+    photo: req.file.path,
+    username:req.body.username,
+    UserId :req.body.UserId,
+    CategoryId :req.body.CategoryId
+},{where:{id:req.params.id}})
+.then((response)=>res.status(200).send(response))
+.catch((err)=>res.status(400).send(err))
 
 }
 
@@ -120,6 +124,17 @@ const upload = multer({
 
 
 
+
+
+// // 3. get single Blog
+
+// const getBlogbydate = async (req, res) => {
+
+//   let id = req.params.id
+//   let blog = await Blog.findOne({ where: {id:id},include:[db.Category,db.User]})
+//   res.status(200).send(blog)
+
+// }
 
 module.exports = {
     addBlog,

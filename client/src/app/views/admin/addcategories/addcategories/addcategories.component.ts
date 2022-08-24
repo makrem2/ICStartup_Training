@@ -22,7 +22,6 @@ export class AddcategoriesComponent implements OnInit {
 
   addcategorie(f:any){
     let data=f.value
-    //console.log(data)
     this.ds.addcategorie(data).subscribe(data=>{
      this.router.navigate(['/admin/gestioncategories'])
     },(err:HttpErrorResponse)=>{

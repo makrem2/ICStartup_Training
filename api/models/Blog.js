@@ -1,12 +1,13 @@
 module.exports=(sequelize,DataType)=>{
     const Blog=sequelize.define("Blog",{
         title: {
-          type:DataType.STRING,
+          type:DataType.STRING(15000),
           required: true,
           },
           desc: {
-            type:DataType.STRING,
+            type:DataType.STRING(15000),
             required: true,
+            
           },
           photo: {
             type:DataType.STRING,
@@ -25,6 +26,9 @@ module.exports=(sequelize,DataType)=>{
       Blog.belongsTo(models.User,{
         onDelete:"cascade"
     })
+    Blog.hasMany(models.Commentaire,{
+      onDelete:"cascade"
+  })
   }
 
 
